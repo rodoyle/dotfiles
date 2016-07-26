@@ -46,7 +46,10 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'godlygeek/tabular'
 Plugin 'rust-lang/rust.vim'
-Plugin 'digitaltoad/vim-jade'
+Plugin 'digitaltoad/vim-pug'
+Plugin 'pangloss/vim-javascript'
+Plugin 'wookiehangover/jshint.vim'
+Plugin 'racer-rust/vim-racer'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -57,7 +60,7 @@ filetype plugin indent on    " required
 " :PluginInstall    - installs plugins; append `!` to update or just :BundleinUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
+
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Bundlein stuff after this line
 
@@ -112,5 +115,13 @@ endif
 augroup pencil
     autocmd!
     autocmd FileType markdown,mkd,md call pencil#init()
-    autocmd FileType text call pencil#init()
 augroup END
+" Syntastic Options
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_jade_checkers = ['pug-lint']
+" Rust Source Directory for Completion
+let g:racer_cmd = '/Users/rodoyle/.cargo/bin/racer'
+let $RUST_SRC_PATH = '/Users/rodoyle/projects/rust/src'
+let g:ycm_rust_src_path = '/Users/rodoyle/projects/rust/src'
+" set default user ctags path
+set tags=~/mytags
