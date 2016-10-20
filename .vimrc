@@ -17,7 +17,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'Raimondi/delimitMate'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'kien/ctrlp.vim'
-Plugin 'klen/python-mode'
 Plugin 'lilydjwg/colorizer'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'mhinz/vim-signify'
@@ -50,6 +49,8 @@ Plugin 'digitaltoad/vim-pug'
 Plugin 'pangloss/vim-javascript'
 Plugin 'wookiehangover/jshint.vim'
 Plugin 'racer-rust/vim-racer'
+Plugin 'python-rope/ropevim'
+Plugin 'alfredodeza/pytest.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -116,12 +117,17 @@ augroup pencil
     autocmd!
     autocmd FileType markdown,mkd,md call pencil#init()
 augroup END
-" Syntastic Options
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_jade_checkers = ['pug-lint']
 " Rust Source Directory for Completion
 let g:racer_cmd = '/Users/rodoyle/.cargo/bin/racer'
 let $RUST_SRC_PATH = '/Users/rodoyle/projects/rust/src'
+let g:ycm_python_binary_path='python'
 let g:ycm_rust_src_path = '/Users/rodoyle/projects/rust/src'
+let g:ycm_always_populate_location_list=1
 " set default user ctags path
-set tags=~/mytags
+set tags=~/src/mytags
+" Syntastic settings
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_open=1
+let g:syntastic_python_checkers=['flake8']
+let g:syntastic_check_on_wq=0
