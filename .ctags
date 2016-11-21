@@ -1,0 +1,4 @@
+--python-kinds=-i
+--exclude=*/.git/*
+--exclude=*/build/*
+--exclude=*/node_modules/*
