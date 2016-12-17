@@ -51,6 +51,7 @@ Plugin 'wookiehangover/jshint.vim'
 Plugin 'racer-rust/vim-racer'
 Plugin 'python-rope/ropevim'
 Plugin 'alfredodeza/pytest.vim'
+Plugin 'craigemery/vim-autotag'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -124,10 +125,9 @@ let g:ycm_python_binary_path='python'
 let g:ycm_rust_src_path = '/Users/rodoyle/projects/rust/src'
 let g:ycm_always_populate_location_list=1
 " set default user ctags path
-set tags=~/src/mytags
 " Syntastic settings
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
-let g:syntastic_python_checkers=['flake8']
+let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_check_on_wq=0
