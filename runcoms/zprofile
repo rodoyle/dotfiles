@@ -18,7 +18,7 @@ fi
 #
 
 export EDITOR='vim'
-export VISUAL='gvim'
+export VISUAL='vim'
 export PAGER='less'
 
 #
@@ -44,8 +44,10 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  /Users/rodoyle/.cargo/bin
   $path
 )
+export RUST_SRC_PATH=/Users/rodoyle/src/rust/src
 
 #
 # Less
@@ -73,5 +75,22 @@ fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
 
-alias beastsync='rsync -avz --exclude-from=./exclude-list.txt --delete  ~/src/deskgen/dgsource rileyd@192.168.2.25:/home/rileyd/src/deskgen --delete'
+## PyEnv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
+# rsync
+alias beastsync='rsync -avz --exclude-from=exclude-list.txt --delete  ~/src/deskgen/dgsource rileyd@192.168.2.25:/home/rileyd/src/deskgen --delete'
+
+# VI bindings
+export KEYTIMEOUT=1
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f /Users/rodoyle/Downloads/google-cloud-sdk/path.zsh.inc ]; then
+  source '/Users/rodoyle/Downloads/google-cloud-sdk/path.zsh.inc'
+fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f /Users/rodoyle/Downloads/google-cloud-sdk/completion.zsh.inc ]; then
+  source '/Users/rodoyle/Downloads/google-cloud-sdk/completion.zsh.inc'
+fi

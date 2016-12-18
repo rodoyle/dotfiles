@@ -12,5 +12,8 @@ fi
 
 # Customize to your needs...
 
-# LESS syntax highlighting
-export LESSOPEN="| /usr/bin/src-hilite-lesspipe.sh %s"
+# The next line updates PATH for the Google Cloud SDK.
+# source '/Users/rodoyle/Downloads/google-cloud-sdk/path.zsh.inc'
+
+# The next line enables shell command completion for gcloud.
+# source '/Users/rodoyle/Downloads/google-cloud-sdk/completion.zsh.inc'
