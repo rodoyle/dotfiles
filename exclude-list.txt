@@ -1,0 +1,6 @@
+.git
+*/node_modules/*
+*.pyc
+tags
+*.so
+*.egg-info*

@@ -20,7 +20,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'lilydjwg/colorizer'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'mhinz/vim-signify'
-Plugin 'reedes/vim-pencil'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -49,9 +48,10 @@ Plugin 'digitaltoad/vim-pug'
 Plugin 'pangloss/vim-javascript'
 Plugin 'wookiehangover/jshint.vim'
 Plugin 'racer-rust/vim-racer'
-Plugin 'python-rope/ropevim'
 Plugin 'alfredodeza/pytest.vim'
 Plugin 'craigemery/vim-autotag'
+Plugin 'saltstack/salt-vim'
+Plugin 'stephpy/vim-yaml'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -113,14 +113,12 @@ endif
 if !isdirectory(&undodir)
    call mkdir(&undodir, "p")
 endif
-" Vim Pencil for Writing
-augroup pencil
-    autocmd!
-    autocmd FileType markdown,mkd,md call pencil#init()
-augroup END
+" RUST LANG SETTINGS
 " Rust Source Directory for Completion
 let g:racer_cmd = '/Users/rodoyle/.cargo/bin/racer'
+let g:racer_experimental_completer=1
 let $RUST_SRC_PATH = '/Users/rodoyle/src/rust/src'
+let g:syntastic_rust_checkers=['rustc']
 let g:ycm_python_binary_path='python'
 let g:ycm_rust_src_path = '/Users/rodoyle/projects/rust/src'
 let g:ycm_always_populate_location_list=1
