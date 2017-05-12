@@ -115,12 +115,12 @@ if !isdirectory(&undodir)
 endif
 " RUST LANG SETTINGS
 " Rust Source Directory for Completion
-let g:racer_cmd = '/Users/rodoyle/.cargo/bin/racer'
+let g:racer_cmd = '~/.cargo/bin/racer'
 let g:racer_experimental_completer=1
-let $RUST_SRC_PATH = '/Users/rodoyle/src/rust/src'
+let $RUST_SRC_PATH = '~/src/rust/src'
 let g:syntastic_rust_checkers=['rustc']
 let g:ycm_python_binary_path='python'
-let g:ycm_rust_src_path = '/Users/rodoyle/projects/rust/src'
+let g:ycm_rust_src_path = '~/src/rust/src'
 let g:ycm_always_populate_location_list=1
 " set default user ctags path
 " Syntastic settings
