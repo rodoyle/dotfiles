@@ -58,6 +58,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'wookiehangover/jshint.vim'
+Plugin 'mxw/vim-jsx'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
@@ -89,10 +90,8 @@ set mouse=a
 set incsearch
 " highlighted search results
 set hlsearch
-
 " syntax highlight on
 syntax on
-
 " show line numbers
 set nu
 " Spelling
@@ -119,6 +118,10 @@ endif
 if !isdirectory(&undodir)
    call mkdir(&undodir, "p")
 endif
+" JAVASCRIPT SETTINGS
+let g:jsx_ext_required = 0 "Allow JSX in normal JS files
+let g:syntastic_javascript_checkers=['eslint']
+let g:JSHintHighlightErrorLine = 0 "Don't make entire line highlighted
 " RUST LANG SETTINGS
 " Rust Source Directory for Completion
 let g:racer_cmd = '~/.cargo/bin/racer'
@@ -135,3 +138,4 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_check_on_open=1
 let g:syntastic_python_checkers=['pyflakes']
 let g:syntastic_check_on_wq=0
+
