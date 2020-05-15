@@ -17,8 +17,6 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 
-" Web API client
-Plugin 'mattn/webapi-vim'
 " removes the <number> from <number>w with <leader><leader>w
 Plugin 'Lokaltog/vim-easymotion'
 " RipGrep Search
@@ -27,13 +25,8 @@ Plugin 'jremmen/vim-ripgrep'
 "Plugin 'Raimondi/delimitMate'
 " Code Completion Server
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'w0rp/ale'
-" Syntax Checker Runner
-"Plugin 'vim-syntastic/syntastic'
-" helper for easy tags
-Plugin 'xolox/vim-misc'
-" Ctag Manager
-Plugin 'xolox/vim-easytags'
+" Async syntax and linter
+Plugin 'dense-analysis/ale'
 " Align Text
 Plugin 'godlygeek/tabular'
 " FzF Fuzzy Finder Integration
@@ -50,7 +43,7 @@ Plugin 'lilydjwg/colorizer'
 Plugin 'mhinz/vim-signify'
 " Toggle and fix common mispellings
 Plugin 'tpope/vim-abolish'
-" Comment stuff out
+" Comment stuff out This is great
 Plugin 'tpope/vim-commentary'
 " Async Build and Test runner :Make[!] :Dispatch b:dispatch='rustc %'
 Plugin 'tpope/vim-dispatch'
@@ -58,8 +51,6 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-eunuch'
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
-" Markdown Support
-Plugin 'tpope/vim-markdown'
 " project structure metadat
 Plugin 'tpope/vim-projectionist'
 " Repeat plugin maps
@@ -82,26 +73,31 @@ Plugin 'tpope/vim-vinegar'
 Plugin 'alfredodeza/pytest.vim'
 " DOCKER PLUGINS
 Plugin 'ekalinin/dockerfile.vim'
+" CTags Manager
+Plugin 'ludovicchabant/vim-gutentags'
+" Logstash config syntax
+Plugin 'robbles/logstash'
+" Make Quickfix list editable for bulk changes
+Plugin 'stefandtw/quickfix-reflector.vim'
 
 " JAVASCRIPT PLUGINS
 Plugin 'marijnh/tern_for_vim'
 Plugin 'digitaltoad/vim-pug'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'posva/vim-vue'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'stephpy/vim-yaml'
-Plugin 'wookiehangover/jshint.vim'
 Plugin 'mxw/vim-jsx'
 
 " RUST PLUGINS
 " the big one
 Plugin 'rust-lang/rust.vim'
 " Rust Clippy
-Plugin 'wagnerf42/vim-clippy'
+"Plugin 'wagnerf42/vim-clippy'
 " on the fly class outliner from tags 
 Plugin 'majutsushi/tagbar'
-Plugin 'racer-rust/vim-racer'
+" Racer integration, which is now handled by YCM
+"Plugin 'racer-rust/vim-racer'
 Plugin 'lepture/vim-jinja'
 
 call vundle#end()            " required
@@ -175,10 +171,11 @@ let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/
 set hidden
 let g:racer_cmd = '~/.cargo/bin/racer'
 let g:racer_experimental_completer=1
-let g:ale_linters = {'rust':['rls', 'cargo']}
-let g:ale_fixers = {'rust':['rustfmt']}
+"let g:ale_linters = {'rust':['rls', 'cargo']}
+let g:ale_linters = {'rust':['cargo']}
+let g:ale_fixers = {'rust':['cargo', 'rustfmt']}
 set tags=./tags,tags,~/src/threatx/tags,~/src/rust/tags
-let g:syntastic_rust_checkers=['cargo','clippy']
+"let g:syntastic_rust_checkers=['cargo','clippy']
 
 " Run rustc then cargo check then clippy. Clippy has a LOT of false positives
 " We don't use rustc as it only examines one file at a time
@@ -198,3 +195,7 @@ let g:syntastic_debug=1
 " local file don't auto-check on open
 " b:syntastic_mode='passive'
 
+" Configure ctrl-p to use RipGrep for search
+if executable('rg')
+  let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
+endif
