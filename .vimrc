@@ -24,7 +24,7 @@ Plugin 'jremmen/vim-ripgrep'
 " THE DEVIL - auto close quotes kill with  b:delimitMate_autoclose = 0
 "Plugin 'Raimondi/delimitMate'
 " Code Completion Server
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 " Async syntax and linter
 Plugin 'dense-analysis/ale'
 " Align Text
@@ -69,6 +69,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 " - to access directory tree
 Plugin 'tpope/vim-vinegar'
+
 " PYTHON PLUGINS
 Plugin 'alfredodeza/pytest.vim'
 " DOCKER PLUGINS
@@ -90,15 +91,11 @@ Plugin 'stephpy/vim-yaml'
 Plugin 'mxw/vim-jsx'
 
 " RUST PLUGINS
-" the big one
 Plugin 'rust-lang/rust.vim'
-" Rust Clippy
-"Plugin 'wagnerf42/vim-clippy'
-" on the fly class outliner from tags 
 Plugin 'majutsushi/tagbar'
-" Racer integration, which is now handled by YCM
-"Plugin 'racer-rust/vim-racer'
 Plugin 'lepture/vim-jinja'
+" Tell TagBar to use rust.vim definitions
+let g:rust_use_custom_ctags_defs = 1
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -172,7 +169,7 @@ set hidden
 let g:racer_cmd = '~/.cargo/bin/racer'
 let g:racer_experimental_completer=1
 "let g:ale_linters = {'rust':['rls', 'cargo']}
-let g:ale_linters = {'rust':['cargo']}
+let g:ale_linters = {'rust':['analyzer']}
 let g:ale_fixers = {'rust':['cargo', 'rustfmt']}
 set tags=./tags,tags,~/src/threatx/tags,~/src/rust/tags
 "let g:syntastic_rust_checkers=['cargo','clippy']
